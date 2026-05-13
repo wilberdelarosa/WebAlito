@@ -7,10 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -27,17 +28,46 @@ jobs:
             exit 1
           fi
 
-      - name: Deploy to Hostinger VPS
-        uses: hostinger/deploy-on-vps@v2
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
         with:
-          api-key: ${{ secrets.HOSTINGER_API_KEY }}
-          virtual-machine: "957048"
-          project-name: alito-storefront
-          docker-compose-path: docker-compose.hostinger-storefront.yml
-          environment-variables: |
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push storefront image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.hostinger-storefront
+          push: true
+          tags: |
+            ghcr.io/wilberdelarosa/webalito-storefront:${{ github.sha }}
+            ghcr.io/wilberdelarosa/webalito-storefront:main
+          build-args: |
             NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_df2bc7ab69ccdc221eb37f6a43d8d5956b5cb92c31709b5b5ecbfa81cc69c435
             NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://127.0.0.1:65535
             NEXT_PUBLIC_DEFAULT_REGION=dk
             NEXT_PUBLIC_BASE_URL=https://cotizador.alitogroup.com
             NEXT_PUBLIC_SUPABASE_URL=https://vlemoscpdnqaczcydlaq.supabase.co
             NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsZW1vc2NwZG5xYWN6Y3lkbGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAyNDA5OTAsImV4cCI6MjA4NTgxNjk5MH0.1YsSXR2I7aJ6uSEf2cm5bseqB1M3KmUwIRuGiaA2ruc
+            SUPABASE_URL=https://vlemoscpdnqaczcydlaq.supabase.co
+            SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsZW1vc2NwZG5xYWN6Y3lkbGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAyNDA5OTAsImV4cCI6MjA4NTgxNjk5MH0.1YsSXR2I7aJ6uSEf2cm5bseqB1M3KmUwIRuGiaA2ruc
+
+      - name: Deploy to Hostinger VPS
+        uses: hostinger/deploy-on-vps@v2
+        with:
+          api-key: ${{ secrets.HOSTINGER_API_KEY }}
+          virtual-machine: "957048"
+          project-name: alito-storefront
+          docker-compose-path: docker-compose.hostinger-storefront.ghcr.yml
+          environment-variables: |
+            STOREFRONT_IMAGE=ghcr.io/wilberdelarosa/webalito-storefront:${{ github.sha }}
+            NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_df2bc7ab69ccdc221eb37f6a43d8d5956b5cb92c31709b5b5ecbfa81cc69c435
+            NEXT_PUBLIC_MEDUSA_BACKEND_URL=http://127.0.0.1:65535
+            NEXT_PUBLIC_DEFAULT_REGION=dk
+            NEXT_PUBLIC_BASE_URL=https://cotizador.alitogroup.com
+            NEXT_PUBLIC_SUPABASE_URL=https://vlemoscpdnqaczcydlaq.supabase.co
+            NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsZW1vc2NwZG5xYWN6Y3lkbGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAyNDA5OTAsImV4cCI6MjA4NTgxNjk5MH0.1YsSXR2I7aJ6uSEf2cm5bseqB1M3KmUwIRuGiaA2ruc
+            SUPABASE_URL=https://vlemoscpdnqaczcydlaq.supabase.co
+            SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsZW1vc2NwZG5xYWN6Y3lkbGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAyNDA5OTAsImV4cCI6MjA4NTgxNjk5MH0.1YsSXR2I7aJ6uSEf2cm5bseqB1M3KmUwIRuGiaA2ruc
