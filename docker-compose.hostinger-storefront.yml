@@ -11,7 +11,6 @@ services:
         NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
         NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
     image: alito-storefront:latest
-    container_name: alito-storefront
     restart: unless-stopped
     environment:
       NODE_ENV: production
@@ -31,11 +30,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=root_default
-      - traefik.http.routers.alito-storefront.rule=Host(`cotizador.alitogroup.com`)
-      - traefik.http.routers.alito-storefront.entrypoints=websecure
-      - traefik.http.routers.alito-storefront.tls=true
-      - traefik.http.routers.alito-storefront.tls.certresolver=mytlschallenge
-      - traefik.http.services.alito-storefront.loadbalancer.server.port=8000
+      - traefik.http.routers.cotizador-alitogroup.rule=Host(`cotizador.alitogroup.com`)
+      - traefik.http.routers.cotizador-alitogroup.entrypoints=websecure
+      - traefik.http.routers.cotizador-alitogroup.tls=true
+      - traefik.http.routers.cotizador-alitogroup.tls.certresolver=mytlschallenge
+      - traefik.http.services.cotizador-alitogroup.loadbalancer.server.port=8000
     networks:
       - root_default
 
