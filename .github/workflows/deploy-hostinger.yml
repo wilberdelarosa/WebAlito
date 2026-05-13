@@ -15,6 +15,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Validate workflow configuration
+        shell: bash
+        run: |
+          if [ -z "${{ secrets.HOSTINGER_API_KEY }}" ]; then
+            echo "::error::Missing GitHub Actions secret HOSTINGER_API_KEY"
+            exit 1
+          fi
+          if [ -z "957048" ]; then
+            echo "::error::Missing Hostinger virtual machine id"
+            exit 1
+          fi
+
       - name: Deploy to Hostinger VPS
         uses: hostinger/deploy-on-vps@v2
         with:
