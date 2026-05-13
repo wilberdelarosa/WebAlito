@@ -29,9 +29,14 @@ export default async function ProductRail({
   return (
     <div className="content-container py-12 small:py-24">
       <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
+        <div>
+          <Text className="txt-xlarge">{collection.title}</Text>
+          <Text className="mt-2 text-ui-fg-subtle">
+            Familia operativa para armar una solicitud de cotizacion.
+          </Text>
+        </div>
         <InteractiveLink href={`/collections/${collection.handle}`}>
-          View all
+          Ver familia
         </InteractiveLink>
       </div>
       <ul className="grid grid-cols-2 small:grid-cols-3 gap-x-6 gap-y-24 small:gap-y-36">

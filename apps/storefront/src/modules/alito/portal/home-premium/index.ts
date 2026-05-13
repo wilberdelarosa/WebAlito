@@ -1,0 +1,7 @@
+export { PremiumHeroSection } from "./hero-section"
+export { PremiumStatsBar } from "./stats-bar"
+export { PremiumCategoryCarousel } from "./category-carousel"
+export { PremiumServicesSection } from "./services-section"
+export { PremiumProcessSection } from "./process-section"
+export { PremiumHeader } from "./premium-header"
+export { PremiumFooter } from "./premium-footer"

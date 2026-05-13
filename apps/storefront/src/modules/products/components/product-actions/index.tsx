@@ -3,7 +3,7 @@
 import { addToCart } from "@lib/data/cart"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
-import { Button } from "@modules/common/components/ui"
+import { Button, Text } from "@modules/common/components/ui"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
 import { isEqual } from "lodash"
@@ -160,6 +160,17 @@ export default function ProductActions({
           )}
         </div>
 
+        <div className="border border-ui-border-base bg-ui-bg-subtle p-4">
+          <Text className="txt-small-plus text-ui-fg-base">
+            Configura este item para cotizacion
+          </Text>
+          <Text className="mt-2 txt-small text-ui-fg-subtle">
+            La seleccion entra como borrador. Operaciones valida capacidad,
+            ubicacion, disponibilidad y precio final antes de convertirla en
+            cotizacion/proforma.
+          </Text>
+        </div>
+
         <ProductPrice product={product} variant={selectedVariant} />
 
         <Button
@@ -177,10 +188,10 @@ export default function ProductActions({
           data-testid="add-product-button"
         >
           {!selectedVariant && !options
-            ? "Select variant"
+            ? "Selecciona modalidad"
             : !inStock || !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
+            ? "Requiere revision"
+            : "Agregar a cotizacion"}
         </Button>
         <MobileActions
           product={product}

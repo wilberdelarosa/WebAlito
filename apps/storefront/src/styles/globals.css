@@ -2,6 +2,83 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+  /* ALITO Quantum Industrial */
+  --aq-bg: #F6F4EE;
+  --aq-bg-2: #ECE8DE;
+  --aq-surface: #FFFDF8;
+  --aq-surface-glass: rgba(255, 253, 248, 0.78);
+  --aq-surface-dark: #191919;
+  --aq-fg: #171717;
+  --aq-fg-2: #5F5B57;
+  --aq-border: rgba(23, 23, 23, 0.08);
+  --aq-border-strong: rgba(23, 23, 23, 0.14);
+  --aq-amber: #F4B400;
+  --aq-amber-deep: #D79000;
+  --aq-amber-glow: rgba(244, 180, 0, 0.18);
+  --aq-steel: #7E8792;
+  --aq-dust: #D8CEBC;
+  --aq-concrete: #B8B1A5;
+  --aq-success: #2E9D57;
+  /* legacy compat */
+  --alito-bg: #F6F4EE;
+  --alito-fg: #171717;
+  --alito-surface: rgba(255,253,248,0.78);
+  --alito-surface-strong: #FFFDF8;
+  --alito-border: rgba(23,23,23,0.08);
+  --alito-muted: #5F5B57;
+  --alito-accent: #D79000;
+  --alito-accent-strong: #F4B400;
+  --alito-success: #2E9D57;
+  color-scheme: light;
+}
+
+.dark {
+  --aq-bg: #111110;
+  --aq-bg-2: #1A1917;
+  --aq-surface: #1E1D1B;
+  --aq-surface-glass: rgba(30,29,27,0.82);
+  --aq-surface-dark: #0A0A09;
+  --aq-fg: #F5F3EE;
+  --aq-fg-2: #A8A49E;
+  --aq-border: rgba(255,255,255,0.08);
+  --aq-border-strong: rgba(255,255,255,0.14);
+  --aq-amber: #F4B400;
+  --aq-amber-deep: #D79000;
+  --aq-amber-glow: rgba(244,180,0,0.14);
+  --aq-steel: #7E8792;
+  --aq-dust: #4A453D;
+  --aq-concrete: #6E6860;
+  --aq-success: #4ade80;
+  --alito-bg: #111110;
+  --alito-fg: #F5F3EE;
+  --alito-surface: rgba(30,29,27,0.82);
+  --alito-surface-strong: #1E1D1B;
+  --alito-border: rgba(255,255,255,0.08);
+  --alito-muted: #A8A49E;
+  --alito-accent: #D79000;
+  --alito-accent-strong: #F4B400;
+  --alito-success: #4ade80;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: var(--alito-bg);
+  color: var(--alito-fg);
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--alito-fg);
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -15,6 +92,38 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  .alito-surface {
+    background: var(--alito-surface);
+    border: 1px solid var(--alito-border);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+  }
+
+  .alito-panel {
+    background: var(--alito-surface-strong);
+    border: 1px solid var(--alito-border);
+  }
+
+  .alito-hairline {
+    border-color: var(--alito-border);
+  }
+
+  .alito-accent {
+    color: var(--alito-accent-strong);
+  }
+
+  .alito-muted {
+    color: var(--alito-muted);
+  }
+
+  .alito-ring {
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.15), 0 16px 48px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .alito-ring {
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.18), 0 16px 48px rgba(0, 0, 0, 0.22);
   }
 
   input:focus ~ label,
@@ -35,10 +144,24 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
+    border: 1px solid #e4e4e7;
+    -webkit-text-fill-color: #18181b;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus,
+  .dark select:-webkit-autofill,
+  .dark select:-webkit-autofill:hover,
+  .dark select:-webkit-autofill:focus {
+    border: 1px solid #27272a;
+    -webkit-text-fill-color: #fafaf9;
+    -webkit-box-shadow: 0 0 0px 1000px #18181b inset;
   }
 
   input[type="search"]::-webkit-search-decoration,
@@ -56,6 +179,19 @@
 
   .contrast-btn {
     @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+  }
+
+  .industrial-grid {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .dark .industrial-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 
   .text-xsmall-regular {

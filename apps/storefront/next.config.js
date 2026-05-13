@@ -7,12 +7,20 @@ checkEnvVariables()
  */
 const S3_HOSTNAME = process.env.MEDUSA_CLOUD_S3_HOSTNAME
 const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
+const allowedDevOrigins = [
+  "100.84.92.60",
+  ...(process.env.NEXT_ALLOWED_DEV_ORIGINS || "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean),
+]
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins,
   logging: {
     fetches: {
       fullUrl: true,

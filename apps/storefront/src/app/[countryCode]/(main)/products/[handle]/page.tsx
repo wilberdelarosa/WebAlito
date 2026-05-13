@@ -10,6 +10,8 @@ type Props = {
   searchParams: Promise<{ v_id?: string }>
 }
 
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   try {
     const countryCodes = await listRegions().then((regions) =>
@@ -72,16 +74,28 @@ function getImagesForVariant(
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params
   const { handle } = params
-  const region = await getRegion(params.countryCode)
+  let region
+
+  try {
+    region = await getRegion(params.countryCode)
+  } catch {
+    notFound()
+  }
 
   if (!region) {
     notFound()
   }
 
-  const product = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle },
-  }).then(({ response }) => response.products[0])
+  let product
+
+  try {
+    product = await listProducts({
+      countryCode: params.countryCode,
+      queryParams: { handle },
+    }).then(({ response }) => response.products[0])
+  } catch {
+    notFound()
+  }
 
   if (!product) {
     notFound()
@@ -100,8 +114,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
 export default async function ProductPage(props: Props) {
   const params = await props.params
-  const region = await getRegion(params.countryCode)
   const searchParams = await props.searchParams
+  let region
+
+  try {
+    region = await getRegion(params.countryCode)
+  } catch {
+    notFound()
+  }
 
   const selectedVariantId = searchParams.v_id
 
@@ -109,10 +129,16 @@ export default async function ProductPage(props: Props) {
     notFound()
   }
 
-  const pricedProduct = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle: params.handle },
-  }).then(({ response }) => response.products[0])
+  let pricedProduct
+
+  try {
+    pricedProduct = await listProducts({
+      countryCode: params.countryCode,
+      queryParams: { handle: params.handle },
+    }).then(({ response }) => response.products[0])
+  } catch {
+    notFound()
+  }
 
   const images = getImagesForVariant(pricedProduct, selectedVariantId)
 

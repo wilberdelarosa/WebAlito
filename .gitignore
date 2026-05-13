@@ -45,6 +45,20 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Local tooling
+.agents
+.claude
+.stitch
+.hostinger-deploy
+
+# Local logs
+*.out.log
+*.err.log
+apps/backend/static/private-*
+
+# TypeScript incremental state
+*.tsbuildinfo
+
 # macOS system files
 .DS_Store
 .DS_Store?
@@ -54,3 +68,4 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db
 **/.DS_Store
+.gitnexus

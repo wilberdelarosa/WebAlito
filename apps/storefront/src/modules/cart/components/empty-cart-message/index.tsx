@@ -9,14 +9,14 @@ const EmptyCartMessage = () => {
         level="h1"
         className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
       >
-        Cart
+        Borrador de cotizacion
       </Heading>
       <Text className="text-base-regular mt-4 mb-6 max-w-[32rem]">
-        You don&apos;t have anything in your cart. Let&apos;s change that, use
-        the link below to start browsing our products.
+        Aun no tienes materiales, camiones o equipos en el borrador. Explora
+        el catalogo operativo y agrega lo que quieres cotizar.
       </Text>
       <div>
-        <InteractiveLink href="/store">Explore products</InteractiveLink>
+        <InteractiveLink href="/store">Explorar catalogo</InteractiveLink>
       </div>
     </div>
   )

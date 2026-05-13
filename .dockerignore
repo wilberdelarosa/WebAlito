@@ -1,0 +1,9 @@
+.git
+.turbo
+node_modules
+apps/storefront/node_modules
+apps/storefront/.next
+apps/storefront/.env.local
+apps/backend/node_modules
+apps/backend/.medusa
+apps/backend/.env

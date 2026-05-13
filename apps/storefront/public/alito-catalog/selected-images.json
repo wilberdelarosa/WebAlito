@@ -1,0 +1,292 @@
+[
+  {
+    "id": "EXC-CAT320",
+    "family": "Excavadoras",
+    "name": "Excavadora CAT 320-07",
+    "model": "CAT 320-07",
+    "url": "/alito-catalog/EXC-CAT320.png",
+    "width": 577,
+    "height": 433,
+    "bytes": 235841
+  },
+  {
+    "id": "EXC-CAT333",
+    "family": "Excavadoras",
+    "name": "Excavadora CAT 333-07",
+    "model": "CAT 333-07",
+    "url": "/alito-catalog/EXC-CAT333.png",
+    "width": 577,
+    "height": 433,
+    "bytes": 320023
+  },
+  {
+    "id": "EXC-VOL140",
+    "family": "Excavadoras",
+    "name": "Excavadora Volvo 140DL",
+    "model": "Volvo 140DL",
+    "url": "/alito-catalog/EXC-VOL140.png",
+    "width": 500,
+    "height": 500,
+    "bytes": 93926
+  },
+  {
+    "id": "EXC-CAT326",
+    "family": "Excavadoras",
+    "name": "Excavadora CAT 326",
+    "model": "CAT 326",
+    "url": "/alito-catalog/EXC-CAT326.png",
+    "width": 577,
+    "height": 433,
+    "bytes": 263415
+  },
+  {
+    "id": "EXC-CAT313",
+    "family": "Excavadoras",
+    "name": "Excavadora CAT 313",
+    "model": "CAT 313",
+    "url": "/alito-catalog/EXC-CAT313.jpg",
+    "width": 0,
+    "height": 0,
+    "bytes": 889436
+  },
+  {
+    "id": "EXC-SDLG150",
+    "family": "Excavadoras",
+    "name": "Excavadora SDLG E6150F",
+    "model": "SDLG E6150F",
+    "url": "/alito-catalog/EXC-SDLG150.png",
+    "width": 500,
+    "height": 500,
+    "bytes": 207170
+  },
+  {
+    "id": "MCG-CAT216B",
+    "family": "Minicargadores",
+    "name": "Minicargador CAT 216B / 216B3LRC",
+    "model": "CAT 216B",
+    "url": "/alito-catalog/MCG-CAT216B.png",
+    "width": 612,
+    "height": 408,
+    "bytes": 257981
+  },
+  {
+    "id": "MCG-CAT236D",
+    "family": "Minicargadores",
+    "name": "Minicargador CAT 236D / 236DLRC",
+    "model": "CAT 236D",
+    "url": "/alito-catalog/MCG-CAT236D.png",
+    "width": 612,
+    "height": 408,
+    "bytes": 212298
+  },
+  {
+    "id": "MCG-CAT232D",
+    "family": "Minicargadores",
+    "name": "Minicargador CAT 232D",
+    "model": "CAT 232D",
+    "url": "/alito-catalog/MCG-CAT232D.png",
+    "width": 577,
+    "height": 433,
+    "bytes": 210656
+  },
+  {
+    "id": "MRT-VOLEC55D",
+    "family": "Miniretro",
+    "name": "Miniretro Volvo EC55D",
+    "model": "Volvo EC55D",
+    "url": "/alito-catalog/MRT-VOLEC55D.png",
+    "width": 500,
+    "height": 500,
+    "bytes": 126015
+  },
+  {
+    "id": "MRT-CAT305",
+    "family": "Miniretro",
+    "name": "Miniexcavadora CAT 305-07CR",
+    "model": "CAT 305-07CR",
+    "url": "/alito-catalog/MRT-CAT305.jpg",
+    "width": 1440,
+    "height": 1080,
+    "bytes": 195612
+  },
+  {
+    "id": "MRT-SDLG660",
+    "family": "Miniretro",
+    "name": "Miniretro SDLG E660FL",
+    "model": "SDLG E660FL",
+    "url": "/alito-catalog/MRT-SDLG660.jpg",
+    "width": 2035,
+    "height": 2035,
+    "bytes": 108548
+  },
+  {
+    "id": "RTP-CAT416",
+    "family": "Retroexcavadoras",
+    "name": "Retroexcavadora CAT 416 / 416-07LRC",
+    "model": "CAT 416",
+    "url": "/alito-catalog/RTP-CAT416.jpg",
+    "width": 5333,
+    "height": 3000,
+    "bytes": 4569828
+  },
+  {
+    "id": "ROD-CAT27",
+    "family": "Rodillos",
+    "name": "Compactador CAT CB2.7LRC / 2.7TL",
+    "model": "CAT CB2.7LRC",
+    "url": "/alito-catalog/ROD-CAT27.jpg",
+    "width": 2500,
+    "height": 1667,
+    "bytes": 480514
+  },
+  {
+    "id": "ROD-CAT11",
+    "family": "Rodillos",
+    "name": "Rodillo CAT 11TL / GS11",
+    "model": "CAT GS11",
+    "url": "/alito-catalog/ROD-CAT11.jpg",
+    "width": 1280,
+    "height": 720,
+    "bytes": 137076
+  },
+  {
+    "id": "ROD-AMM70",
+    "family": "Rodillos",
+    "name": "Rodillo Ammann ASC 70",
+    "model": "Ammann ASC 70",
+    "url": "/alito-catalog/ROD-AMM70.jpg",
+    "width": 1600,
+    "height": 900,
+    "bytes": 130356
+  },
+  {
+    "id": "MCF-CAT",
+    "family": "Montacargas",
+    "name": "Montacargas CAT MCF",
+    "model": "CAT MCF",
+    "url": "/alito-catalog/MCF-CAT.jpg",
+    "width": 2000,
+    "height": 1334,
+    "bytes": 958073
+  },
+  {
+    "id": "TLH-JLG943",
+    "family": "Telehandler",
+    "name": "Telehandler JLG 943",
+    "model": "JLG 943",
+    "url": "/alito-catalog/TLH-JLG943.jpg",
+    "width": 2016,
+    "height": 1512,
+    "bytes": 527229
+  },
+  {
+    "id": "TRC-CATD6",
+    "family": "Tractor de Orugas",
+    "name": "Tractor CAT D6",
+    "model": "CAT D6",
+    "url": "/alito-catalog/TRC-CATD6.jpg",
+    "width": 4000,
+    "height": 3000,
+    "bytes": 2693000
+  },
+  {
+    "id": "GRU-JAC",
+    "family": "Gruas",
+    "name": "Grúa Blanca JAC HFC1120KN",
+    "model": "JAC HFC1120KN",
+    "url": "/alito-catalog/GRU-JAC.jpg",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 363878
+  },
+  {
+    "id": "CAM-SNT22",
+    "family": "Camiones",
+    "name": "Camión Sinotruk HOWO T1 / ZZ3257V 22m3",
+    "model": "Sinotruk 22m3",
+    "url": "/alito-catalog/CAM-SNT22.jpg",
+    "width": 1000,
+    "height": 1000,
+    "bytes": 94596
+  },
+  {
+    "id": "CAM-JAC14",
+    "family": "Camiones",
+    "name": "Camión JAC HFC3086K / Volteo 14m3",
+    "model": "JAC 14m3",
+    "url": "/alito-catalog/CAM-JAC14.jpg",
+    "width": 1280,
+    "height": 1707,
+    "bytes": 255895
+  },
+  {
+    "id": "CAM-SNT14",
+    "family": "Camiones",
+    "name": "Camión Sinotruk ZZ3167N 14m3",
+    "model": "Sinotruk 14m3",
+    "url": "/alito-catalog/CAM-SNT14.jpg",
+    "width": 2281,
+    "height": 1602,
+    "bytes": 299973
+  },
+  {
+    "id": "CAM-SNT10",
+    "family": "Camiones",
+    "name": "Camión Sinotruk 9M3 (10m3)",
+    "model": "Sinotruk 10m3",
+    "url": "/alito-catalog/CAM-SNT10.jpg",
+    "width": 1562,
+    "height": 2083,
+    "bytes": 411303
+  },
+  {
+    "id": "SUM-ARENA",
+    "family": "Suministros",
+    "name": "Suministro de Arena",
+    "model": "Arena lavada",
+    "url": "/alito-catalog/SUM-ARENA.jpg",
+    "width": 2400,
+    "height": 1600,
+    "bytes": 357908
+  },
+  {
+    "id": "SUM-CALICHE",
+    "family": "Suministros",
+    "name": "Suministro de Caliche",
+    "model": "Caliche Base",
+    "url": "/alito-catalog/SUM-CALICHE.jpg",
+    "width": 1512,
+    "height": 2016,
+    "bytes": 957441
+  },
+  {
+    "id": "SUM-PIEDRA",
+    "family": "Suministros",
+    "name": "Suministro de Piedra Triturada",
+    "model": "Piedra triturada",
+    "url": "/alito-catalog/SUM-PIEDRA.jpg",
+    "width": 2940,
+    "height": 1960,
+    "bytes": 473279
+  },
+  {
+    "id": "SUM-GRAVA",
+    "family": "Suministros",
+    "name": "Suministro de Grava 3/4\"",
+    "model": "Grava 3/4",
+    "url": "/alito-catalog/SUM-GRAVA.jpg",
+    "width": 1445,
+    "height": 1445,
+    "bytes": 724927
+  },
+  {
+    "id": "SUM-RELLENO",
+    "family": "Suministros",
+    "name": "Suministro de Relleno",
+    "model": "Tierra negra",
+    "url": "/alito-catalog/SUM-RELLENO.jpg",
+    "width": 2560,
+    "height": 1920,
+    "bytes": 457426
+  }
+]

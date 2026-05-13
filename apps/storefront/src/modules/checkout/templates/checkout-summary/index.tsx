@@ -15,14 +15,17 @@ const CheckoutSummary = ({ cart }: { cart: HttpTypes.StoreCart }) => {
           level="h2"
           className="flex flex-row text-3xl-regular items-baseline"
         >
-          In your Cart
+          En tu borrador
         </Heading>
         <Divider className="my-6" />
         <CartTotals totals={cart} />
         <ItemsPreviewTemplate cart={cart} />
-        <div className="my-6">
-          <DiscountCode cart={cart} />
+        <div className="my-6 border border-ui-border-base bg-ui-bg-subtle p-4 txt-small text-ui-fg-subtle">
+          El total visible queda como referencia. La cotizacion final se valida
+          por zona, capacidad, acceso y disponibilidad antes de pasar a
+          proforma/factura.
         </div>
+        <DiscountCode cart={cart} />
       </div>
     </div>
   )

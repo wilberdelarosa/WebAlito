@@ -28,16 +28,20 @@ const Summary = ({ cart }: SummaryProps) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Heading level="h2" className="text-[2rem] leading-[2.75rem]">
-        Summary
+        Resumen operativo
       </Heading>
-      <DiscountCode cart={cart} />
+      <div className="border border-ui-border-base bg-ui-bg-subtle p-4 txt-small text-ui-fg-subtle">
+        Los valores aqui son referencia de catalogo. El precio final depende de
+        zona, capacidad, acceso, disponibilidad y validacion de operaciones.
+      </div>
       <Divider />
       <CartTotals totals={cart} />
+      <DiscountCode cart={cart} />
       <LocalizedClientLink
         href={"/checkout?step=" + step}
         data-testid="checkout-button"
       >
-        <Button className="w-full h-10">Go to checkout</Button>
+        <Button className="w-full h-10">Enviar solicitud</Button>
       </LocalizedClientLink>
     </div>
   )

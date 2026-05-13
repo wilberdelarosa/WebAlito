@@ -6,17 +6,24 @@ const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "dk"
 
 const regionMapCache = {
-  regionMap: new Map<string, HttpTypes.StoreRegion>(),
+  regionMap: new Map<string, HttpTypes.StoreRegion | number>(),
   regionMapUpdated: Date.now(),
 }
+
+const getFallbackRegionMap = () =>
+  new Map<string, HttpTypes.StoreRegion | number>([[DEFAULT_REGION, 1]])
+
+const isAlitoPortalPath = (pathname: string) =>
+  /^\/[a-z]{2}\/portal(?:\/|$)/i.test(pathname)
+
+const isUnscopedAlitoPortalPath = (pathname: string) =>
+  pathname === "/portal" || pathname.startsWith("/portal/")
 
 async function getRegionMap(cacheId: string) {
   const { regionMap, regionMapUpdated } = regionMapCache
 
   if (!BACKEND_URL) {
-    throw new Error(
-      "Middleware.ts: Error fetching regions. Did you set up regions in your Medusa Admin and define a NEXT_PUBLIC_MEDUSA_BACKEND_URL environment variable."
-    )
+    return getFallbackRegionMap()
   }
 
   if (
@@ -24,28 +31,34 @@ async function getRegionMap(cacheId: string) {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     // Fetch regions from Medusa. We can't use the JS client here because middleware is running on Edge and the client needs a Node environment.
-    const response = await fetch(`${BACKEND_URL}/store/regions`, {
-      method: "GET",
-      headers: {
-        "x-publishable-api-key": PUBLISHABLE_API_KEY!,
-      },
-      next: {
-        revalidate: 3600,
-        tags: [`regions-${cacheId}`],
-      },
-      cache: "force-cache",
-    })
+    let json: { regions?: HttpTypes.StoreRegion[] }
 
-    if (!response.ok) {
-      throw new Error(`Backend returned ${response.status}`)
+    try {
+      const response = await fetch(`${BACKEND_URL}/store/regions`, {
+        method: "GET",
+        headers: {
+          "x-publishable-api-key": PUBLISHABLE_API_KEY!,
+        },
+        next: {
+          revalidate: 3600,
+          tags: [`regions-${cacheId}`],
+        },
+        cache: "force-cache",
+      })
+
+      if (!response.ok) {
+        return getFallbackRegionMap()
+      }
+
+      json = await response.json()
+    } catch {
+      return getFallbackRegionMap()
     }
-
-    const json = await response.json()
 
     const { regions } = json
 
     if (!regions?.length) {
-      return new Map<string, HttpTypes.StoreRegion>()
+      return getFallbackRegionMap()
     }
 
     // Create a map of country codes to regions.
@@ -101,8 +114,19 @@ async function getCountryCode(
  * Middleware to handle region selection and onboarding status.
  */
 export async function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.includes(".")) {
+  const pathname = request.nextUrl.pathname
+
+  if (pathname.includes(".")) {
     return NextResponse.next()
+  }
+
+  if (isAlitoPortalPath(pathname)) {
+    return NextResponse.next()
+  }
+
+  if (isUnscopedAlitoPortalPath(pathname)) {
+    const redirectUrl = `${request.nextUrl.origin}/${DEFAULT_REGION}${pathname}${request.nextUrl.search || ""}`
+    return NextResponse.redirect(redirectUrl, 307)
   }
 
   const cacheIdCookie = request.cookies.get("_medusa_cache_id")
